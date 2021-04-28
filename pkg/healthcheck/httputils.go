@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	C "github.com/Dreamacro/clash/constant"
-	"github.com/Sansui233/proxypool/pkg/proxy"
+	"github.com/cn-xiao7/xiao7/pkg/proxy"
 	"io/ioutil"
 	"net"
 	"net/http"

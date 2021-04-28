@@ -1,8 +1,8 @@
 ﻿package api
 
 import (
-	binhtml "github.com/Sansui233/proxypool/internal/bindata/html"
-	"github.com/Sansui233/proxypool/log"
+	binhtml "github.com/cn-xiao7/xiao7/internal/bindata/html"
+	"github.com/cn-xiao7/xiao7/log"
 	"html/template"
 	"net/http"
 	"os"
@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Sansui233/proxypool/config"
-	appcache "github.com/Sansui233/proxypool/internal/cache"
-	"github.com/Sansui233/proxypool/pkg/provider"
+	"github.com/cn-xiao7/xiao7/config"
+	appcache "github.com/cn-xiao7/xiao7/internal/cache"
+	"github.com/cn-xiao7/xiao7/pkg/provider"
 	"github.com/gin-contrib/cache"
 	"github.com/gin-contrib/cache/persistence"
 	"github.com/gin-gonic/gin"

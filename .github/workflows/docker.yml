@@ -35,4 +35,4 @@ jobs:
           push: true
           platforms: linux/amd64
           context: .
-          tags: ghcr.io/sansui233/proxypool:latest
+          tags: ghcr.io/cn-xiao7/xiao7:latest

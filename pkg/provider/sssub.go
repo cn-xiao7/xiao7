@@ -2,11 +2,11 @@ package provider
 
 import (
 	"encoding/json"
-	"github.com/Sansui233/proxypool/pkg/tool"
+	"github.com/cn-xiao7/xiao7/pkg/tool"
 	"strconv"
 	"strings"
 
-	"github.com/Sansui233/proxypool/pkg/proxy"
+	"github.com/cn-xiao7/xiao7/pkg/proxy"
 )
 
 type SSSub struct {

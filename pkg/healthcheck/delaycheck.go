@@ -3,7 +3,7 @@ package healthcheck
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/Sansui233/proxypool/pkg/proxy"
+	"github.com/cn-xiao7/xiao7/pkg/proxy"
 	"sync"
 	"time"
 

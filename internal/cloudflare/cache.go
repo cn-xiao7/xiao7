@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/Sansui233/proxypool/config"
+	"github.com/cn-xiao7/xiao7/config"
 	"github.com/cloudflare/cloudflare-go"
 )
 

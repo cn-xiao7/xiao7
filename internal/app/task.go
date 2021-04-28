@@ -2,14 +2,14 @@ package app
 
 import (
 	"fmt"
-	"github.com/Sansui233/proxypool/config"
-	"github.com/Sansui233/proxypool/internal/cache"
-	"github.com/Sansui233/proxypool/internal/database"
-	"github.com/Sansui233/proxypool/log"
-	"github.com/Sansui233/proxypool/pkg/geoIp"
-	"github.com/Sansui233/proxypool/pkg/healthcheck"
-	"github.com/Sansui233/proxypool/pkg/provider"
-	"github.com/Sansui233/proxypool/pkg/proxy"
+	"github.com/cn-xiao7/xiao7/config"
+	"github.com/cn-xiao7/xiao7/internal/cache"
+	"github.com/cn-xiao7/xiao7/internal/database"
+	"github.com/cn-xiao7/xiao7/log"
+	"github.com/cn-xiao7/xiao7/pkg/geoIp"
+	"github.com/cn-xiao7/xiao7/pkg/healthcheck"
+	"github.com/cn-xiao7/xiao7/pkg/provider"
+	"github.com/cn-xiao7/xiao7/pkg/proxy"
 	"sync"
 	"time"
 )
