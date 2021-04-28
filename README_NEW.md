@@ -5,14 +5,6 @@ Clash客户端支持：
 
 ## New
 
-2021-04-20(v0.7.0)
-- 添加自定义healcheck timeout，因此配置文件参数改变，healthCheck包接口略微增加
-- 修改中转节点的Query接口
-- 更新Clash依赖
-
-2021-03-25(v0.6.1)
-- 添加sub的query
-
 2021-02-19(v0.6.0)
 - 添加中转检测和中转筛选（思路抄的原作者）
 - 修正没开speedtest时的query bug

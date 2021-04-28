@@ -2,15 +2,15 @@ package main
 
 import (
 	"flag"
-	"github.com/cn-xiao7/xiao7/pkg/geoIp"
+	"github.com/Sansui233/proxypool/pkg/geoIp"
 	_ "net/http/pprof"
 	"os"
 
-	"github.com/cn-xiao7/xiao7/api"
-	"github.com/cn-xiao7/xiao7/internal/app"
-	"github.com/cn-xiao7/xiao7/internal/cron"
-	"github.com/cn-xiao7/xiao7/internal/database"
-	"github.com/cn-xiao7/xiao7/log"
+	"github.com/Sansui233/proxypool/api"
+	"github.com/Sansui233/proxypool/internal/app"
+	"github.com/Sansui233/proxypool/internal/cron"
+	"github.com/Sansui233/proxypool/internal/database"
+	"github.com/Sansui233/proxypool/log"
 )
 
 var configFilePath = ""

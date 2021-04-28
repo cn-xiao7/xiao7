@@ -3,7 +3,7 @@ package proxy
 import (
 	"encoding/json"
 	"errors"
-	"github.com/cn-xiao7/xiao7/pkg/geoIp"
+	"github.com/Sansui233/proxypool/pkg/geoIp"
 	"strings"
 )
 

@@ -2,10 +2,9 @@ package healthcheck
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	C "github.com/Dreamacro/clash/constant"
-	"github.com/cn-xiao7/xiao7/pkg/proxy"
+	"github.com/Sansui233/proxypool/pkg/proxy"
 	"io/ioutil"
 	"net"
 	"net/http"
@@ -43,7 +42,7 @@ func urlToMetadata(rawURL string) (addr C.Metadata, err error) {
 }
 
 func HTTPGetViaProxy(clashProxy C.Proxy, url string) error {
-	ctx, cancel := context.WithTimeout(context.Background(), DelayTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), defaultURLTestTimeout)
 	defer cancel()
 
 	addr, err := urlToMetadata(url)
@@ -91,7 +90,7 @@ func HTTPGetViaProxy(clashProxy C.Proxy, url string) error {
 }
 
 func HTTPHeadViaProxy(clashProxy C.Proxy, url string) error {
-	ctx, cancel := context.WithTimeout(context.Background(), DelayTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), defaultURLTestTimeout)
 	defer cancel()
 
 	addr, err := urlToMetadata(url)
@@ -134,15 +133,12 @@ func HTTPHeadViaProxy(clashProxy C.Proxy, url string) error {
 	if err != nil {
 		return err
 	}
-	if resp.StatusCode >= 400 {
-		return errors.New(fmt.Sprintf("%d %s for proxy %s %s", resp.StatusCode, resp.Status, clashProxy.Name(), clashProxy.Addr()))
-	}
 	resp.Body.Close()
 	return nil
 }
 
 func HTTPGetBodyViaProxy(clashProxy C.Proxy, url string) ([]byte, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), DelayTimeout)
+	ctx, cancel := context.WithTimeout(context.Background(), defaultURLTestTimeout)
 	defer cancel()
 
 	addr, err := urlToMetadata(url)
@@ -249,8 +245,7 @@ func HTTPGetBodyViaProxyWithTime(clashProxy C.Proxy, url string, t time.Duration
 	return body, nil
 }
 
-// Get body without return to save memory
-func HTTPGetBodyViaProxyWithTimeNoReturn(clashProxy C.Proxy, url string, t time.Duration) error {
+func HTTPGetBodyForSpeedTest(clashProxy C.Proxy, url string, t time.Duration) error {
 	ctx, cancel := context.WithTimeout(context.Background(), t)
 	defer cancel()
 

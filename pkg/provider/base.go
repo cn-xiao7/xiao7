@@ -2,13 +2,14 @@ package provider
 
 import (
 	"fmt"
-	"github.com/cn-xiao7/xiao7/log"
-	"github.com/cn-xiao7/xiao7/pkg/healthcheck"
+	"github.com/Sansui233/proxypool/config"
+	"github.com/Sansui233/proxypool/log"
+	"github.com/Sansui233/proxypool/pkg/healthcheck"
 	"math"
 	"strconv"
 	"strings"
 
-	"github.com/cn-xiao7/xiao7/pkg/proxy"
+	"github.com/Sansui233/proxypool/pkg/proxy"
 )
 
 type Provider interface {
@@ -100,34 +101,22 @@ func (b *Base) preFilter() {
 		}
 
 		if needFilterFilter {
-			if b.Filter == "r" {
+			if b.Filter == "1" {
 				if !strings.Contains(p.BaseInfo().Name, "Relay") {
 					goto exclude
 				}
-			} else if b.Filter == "p" {
+			} else if b.Filter == "2" {
 				if !strings.Contains(p.BaseInfo().Name, "Pool") {
 					goto exclude
 				}
-			} else if b.Filter == "rp" {
+			} else if b.Filter == "3" {
 				if !strings.Contains(p.BaseInfo().Name, "Pool") && !strings.Contains(p.BaseInfo().Name, "Relay") {
-					goto exclude
-				}
-			} else if b.Filter == "nr" {
-				if strings.Contains(p.BaseInfo().Name, "Relay") {
-					goto exclude
-				}
-			} else if b.Filter == "np" {
-				if strings.Contains(p.BaseInfo().Name, "Pool") {
-					goto exclude
-				}
-			} else if b.Filter == "nrp" {
-				if strings.Contains(p.BaseInfo().Name, "Pool") || strings.Contains(p.BaseInfo().Name, "Relay") {
 					goto exclude
 				}
 			}
 		}
 
-		if needFilterSpeed && len(healthcheck.ProxyStats) != 0 && healthcheck.SpeedExist {
+		if needFilterSpeed && len(healthcheck.ProxyStats) != 0 && config.Config.SpeedTest == true {
 			if ps, ok := healthcheck.ProxyStats.Find(p); ok {
 				if ps.Speed != 0 {
 					// clear history speed tag

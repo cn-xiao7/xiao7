@@ -1,8 +1,8 @@
-﻿package api
+package api
 
 import (
-	binhtml "github.com/cn-xiao7/xiao7/internal/bindata/html"
-	"github.com/cn-xiao7/xiao7/log"
+	binhtml "github.com/Sansui233/proxypool/internal/bindata/html"
+	"github.com/Sansui233/proxypool/log"
 	"html/template"
 	"net/http"
 	"os"
@@ -10,16 +10,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cn-xiao7/xiao7/config"
-	appcache "github.com/cn-xiao7/xiao7/internal/cache"
-	"github.com/cn-xiao7/xiao7/pkg/provider"
+	"github.com/Sansui233/proxypool/config"
+	appcache "github.com/Sansui233/proxypool/internal/cache"
+	"github.com/Sansui233/proxypool/pkg/provider"
 	"github.com/gin-contrib/cache"
 	"github.com/gin-contrib/cache/persistence"
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
 )
 
-const version = "v0.7.1"
+const version = "v0.6.0"
 
 var router *gin.Engine
 
@@ -189,91 +189,51 @@ func setupRouter() {
 	})
 
 	router.GET("/ss/sub", func(c *gin.Context) {
-		proxyCountry := c.DefaultQuery("c", "")
-		proxyNotCountry := c.DefaultQuery("nc", "")
-		proxySpeed := c.DefaultQuery("speed", "")
-		proxyFilter := c.DefaultQuery("filter", "")
 		proxies := appcache.GetProxies("proxies")
 		ssSub := provider.SSSub{
 			Base: provider.Base{
-				Proxies:    &proxies,
-				Types:      "ss",
-				Country:    proxyCountry,
-				NotCountry: proxyNotCountry,
-				Speed:      proxySpeed,
-				Filter:     proxyFilter,
+				Proxies: &proxies,
+				Types:   "ss",
 			},
 		}
 		c.String(200, ssSub.Provide())
 	})
 	router.GET("/ssr/sub", func(c *gin.Context) {
-		proxyCountry := c.DefaultQuery("c", "")
-		proxyNotCountry := c.DefaultQuery("nc", "")
-		proxySpeed := c.DefaultQuery("speed", "")
-		proxyFilter := c.DefaultQuery("filter", "")
 		proxies := appcache.GetProxies("proxies")
 		ssrSub := provider.SSRSub{
 			Base: provider.Base{
-				Proxies:    &proxies,
-				Types:      "ssr",
-				Country:    proxyCountry,
-				NotCountry: proxyNotCountry,
-				Speed:      proxySpeed,
-				Filter:     proxyFilter,
+				Proxies: &proxies,
+				Types:   "ssr",
 			},
 		}
 		c.String(200, ssrSub.Provide())
 	})
 	router.GET("/vmess/sub", func(c *gin.Context) {
-		proxyCountry := c.DefaultQuery("c", "")
-		proxyNotCountry := c.DefaultQuery("nc", "")
-		proxySpeed := c.DefaultQuery("speed", "")
-		proxyFilter := c.DefaultQuery("filter", "")
 		proxies := appcache.GetProxies("proxies")
 		vmessSub := provider.VmessSub{
 			Base: provider.Base{
-				Proxies:    &proxies,
-				Types:      "vmess",
-				Country:    proxyCountry,
-				NotCountry: proxyNotCountry,
-				Speed:      proxySpeed,
-				Filter:     proxyFilter,
+				Proxies: &proxies,
+				Types:   "vmess",
 			},
 		}
 		c.String(200, vmessSub.Provide())
 	})
 	router.GET("/sip002/sub", func(c *gin.Context) {
-		proxyCountry := c.DefaultQuery("c", "")
-		proxyNotCountry := c.DefaultQuery("nc", "")
-		proxySpeed := c.DefaultQuery("speed", "")
-		proxyFilter := c.DefaultQuery("filter", "")
 		proxies := appcache.GetProxies("proxies")
 		sip002Sub := provider.SIP002Sub{
 			Base: provider.Base{
-				Proxies:    &proxies,
-				Types:      "ss",
-				Country:    proxyCountry,
-				NotCountry: proxyNotCountry,
-				Speed:      proxySpeed,
-				Filter:     proxyFilter,
+				Proxies: &proxies,
+				Types:   "ss",
 			},
 		}
 		c.String(200, sip002Sub.Provide())
 	})
 	router.GET("/trojan/sub", func(c *gin.Context) {
-		proxyCountry := c.DefaultQuery("c", "")
-		proxyNotCountry := c.DefaultQuery("nc", "")
-		proxySpeed := c.DefaultQuery("speed", "")
-		proxyFilter := c.DefaultQuery("filter", "")
 		proxies := appcache.GetProxies("proxies")
 		trojanSub := provider.TrojanSub{
 			Base: provider.Base{
-				Proxies:    &proxies,
-				Types:      "trojan",
-				Country:    proxyCountry,
-				NotCountry: proxyNotCountry,
-				Speed:      proxySpeed,
-				Filter:     proxyFilter,
+				Proxies: &proxies,
+				Types:   "trojan",
 			},
 		}
 		c.String(200, trojanSub.Provide())
